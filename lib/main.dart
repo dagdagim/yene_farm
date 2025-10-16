@@ -11,6 +11,8 @@ import 'package:yene_farm/services/translation_service.dart';
 import 'package:yene_farm/utils/colors.dart';
 import 'package:yene_farm/utils/constants.dart';
 import 'package:yene_farm/services/supabase_service.dart';
+import 'package:yene_farm/screens/auth/signin.dart';
+import 'package:yene_farm/screens/auth/signup.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
@@ -189,6 +191,10 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             home: const SplashScreen(),
+            routes: {
+              '/signin': (context) => const SignInPage(),
+              '/signup': (context) => const SignUpPage(),
+            },
             debugShowCheckedModeBanner: false,
           );
         },
