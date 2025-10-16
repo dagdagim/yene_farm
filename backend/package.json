@@ -1,0 +1,31 @@
+{
+  "name": "yene-farm-backend",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "lint": "echo no linter configured",
+    "smoke": "node scripts/smoke.js",
+    "products-e2e": "node scripts/products_e2e.js",
+    "apply-schema": "node scripts/apply_schema.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.8.0",
+    "helmet": "^7.0.0",
+    "joi": "^17.10.0",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.16.3"
+    ,"bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
