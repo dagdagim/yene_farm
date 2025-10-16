@@ -49,7 +49,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ChangeNotifierProvider(create: (_) {
+          final lp = LanguageProvider();
+          lp.loadLanguageFromStorage();
+          return lp;
+        }),
         ChangeNotifierProvider(create: (_) {
           final p = AuthProvider();
           // attempt to load saved session immediately

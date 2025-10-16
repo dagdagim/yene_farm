@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yene_farm/services/storage_service.dart';
 
 class LanguageProvider with ChangeNotifier {
   Locale _currentLocale = const Locale('am', 'ET');
@@ -10,6 +11,10 @@ class LanguageProvider with ChangeNotifier {
   void setLanguage(String languageCode) {
     _currentLocale = Locale(languageCode);
     loadTranslations(languageCode);
+    // persist selection
+    try {
+      StorageService().saveLanguage(languageCode);
+    } catch (_) {}
     notifyListeners();
   }
 
@@ -70,6 +75,17 @@ class LanguageProvider with ChangeNotifier {
         'welcome_back': 'Welcome Back!',
         'sign_in_to_continue': 'Sign in to continue',
       };
+    }
+  }
+
+  /// Load language from persistent storage. Call at app startup.
+  void loadLanguageFromStorage() {
+    try {
+      final lang = StorageService().getLanguage();
+      _currentLocale = Locale(lang);
+      loadTranslations(lang);
+    } catch (_) {
+      loadTranslations(_currentLocale.languageCode);
     }
   }
 
