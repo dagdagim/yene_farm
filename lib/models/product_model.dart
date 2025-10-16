@@ -52,4 +52,24 @@ class ProductModel {
       'createdAt': createdAt.toIso8601String(),
     };
   }
+
+  factory ProductModel.fromJson(Map<String, dynamic> json) {
+    return ProductModel(
+      id: json['id'] as String,
+      farmerId: json['farmerId'] as String,
+      farmerName: json['farmerName'] as String,
+      name: json['name'] as String,
+      category: json['category'] as String,
+      price: (json['price'] as num).toDouble(),
+      quantity: (json['quantity'] as num).toDouble(),
+      unit: json['unit'] as String,
+      images: (json['images'] as List<dynamic>?)?.map((e) => e.toString()).toList() ?? <String>[],
+      description: json['description'] as String? ?? '',
+      harvestDate: DateTime.parse(json['harvestDate'] as String),
+      location: json['location'] as String? ?? '',
+      isOrganic: json['isOrganic'] as bool? ?? false,
+      farmerRating: (json['farmerRating'] as num?)?.toDouble() ?? 0.0,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+  }
 }
